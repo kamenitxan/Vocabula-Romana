@@ -1,0 +1,38 @@
+{# @pebvariable name="chapters" type="java.lang.List" #}
+
+{% extends "core" %}
+
+{% block content %}
+<div id="progres">
+	<div id="completed"></div>
+	<div id="progresTotal"></div>
+</div>
+<div id="chapters">
+{% for ch in chapters %}
+	<label>
+		<input type="checkbox" value="{{ ch.id }}" name="chapter">
+        {{ ch.name }}
+	</label><br>
+{% endfor %}
+	<button id="random">Random</button>
+	<button id="oftenWrong">Often Wrong</button>
+</div>
+<div id="wordContainer">
+	<div id="scene">
+		<div id="word" class="card">
+			<div class="card__face card__face--front">front</div>
+			<div class="card__face card__face--back">back</div>
+		</div>
+	</div>
+	<div id="wordButtons">
+		<button id="correctBtn">Correct</button>
+		<button id="wrongBtn">Wrong</button>
+	</div>
+</div>
+
+
+<script>
+	const FRcls = new (require("FR.js"));
+	const FR = FRcls.init();
+</script>
+{% endblock %}
