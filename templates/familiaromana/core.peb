@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<header id="menu">Vocabula Romana</header>
+<header id="menu"><a href="/">Vocabula Romana</a></header>
 <div class="wrapper">
 {% block content %}{% endblock %}
 </div>

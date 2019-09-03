@@ -49,6 +49,8 @@ class FR {
         this.currentTotal = 0;
         this.currentWrong = 0;
         this.setProgres(0);
+        const scoreHolder = document.querySelector("#score");
+        scoreHolder.classList.add(`hidden`);
         const chapterCheckboxes = [...document.querySelectorAll("#chapters input")];
         const chapters = chapterCheckboxes.filter(ch => ch.checked).map(ch => ch.value);
         console.log("Selected chapters: " + chapters);
@@ -64,6 +66,7 @@ class FR {
             words = that.shuffle(words);
             console.log(words);
             const wordHolder = document.querySelector("#word");
+            wordHolder.classList.remove(`hidden`);
             wordHolder.addEventListener("click", e => that.showTranslation());
             const [head, ...tail] = words;
             const latinCard = document.querySelector("#word .card__face--front");
@@ -89,10 +92,11 @@ class FR {
     }
 
     showWord() {
-        const wordHolder = document.querySelector("#word");
         if (this.remainingWords.length <= 0) {
             const correct = ((this.currentTotal - this.currentWrong) / this.currentTotal) * 100;
-            wordHolder.innerText = "Konec - správně: " + correct + "%";
+            const scoreHolder = document.querySelector("#score");
+            scoreHolder.classList.remove(`hidden`);
+            scoreHolder.innerText = "Konec - správně: " + correct + "%";
             const chaptersDiv = document.querySelector("#chapters");
             chaptersDiv.classList.remove('hidden');
             const wordButtonsDiv = document.querySelector(`#wordButtons`);

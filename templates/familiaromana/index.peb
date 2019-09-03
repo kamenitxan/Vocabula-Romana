@@ -19,7 +19,7 @@
 </div>
 <div id="wordContainer">
 	<div id="scene">
-		<div id="word" class="card">
+		<div id="word" class="card hidden">
 			<div class="card__face card__face--front">front</div>
 			<div class="card__face card__face--back">back</div>
 		</div>
@@ -29,6 +29,7 @@
 		<button id="wrongBtn">Wrong</button>
 	</div>
 </div>
+<div id="score"></div>
 
 
 <script>

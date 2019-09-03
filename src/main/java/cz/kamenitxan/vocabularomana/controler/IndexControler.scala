@@ -16,10 +16,8 @@ import scala.collection.JavaConverters._
   */
 class IndexControler extends IControler {
 	private val logger: Logger = LoggerFactory.getLogger(this.getClass)
-
-	val template = "index"
-
-	val ALL_PAGES_SQL = "SELECT * FROM Chapter JOIN JakonObject ON Chapter.id = JakonObject.id"
+	private val template = "index"
+	private val ALL_PAGES_SQL = "SELECT * FROM Chapter JOIN JakonObject ON Chapter.id = JakonObject.id"
 
 	def generate() {
 		val e: TemplateEngine = TemplateUtils.getEngine
