@@ -17,8 +17,8 @@
 
 	<repositories>
 		<repository>
-			<id>nexus</id>
-			<url>http://tomas-pavel-pc.etnetera.mh.etn:8081/repository/maven-snapshots/</url>
+			<id>app-engine</id>
+			<url>https://kamenitxans-maven-repository.appspot.com</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>cz.kamenitxan</groupId>
 			<artifactId>jakon</artifactId>
-			<version>0.2-20190902.160913-92</version>
+			<version>0.2-20191107.224424-33</version>
 		</dependency>
 	</dependencies>
 
@@ -39,7 +39,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<id>make-assembly</id>

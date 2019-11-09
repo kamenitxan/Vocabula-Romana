@@ -7,6 +7,7 @@ class FR {
         this.localData = "";
         this.currentTotal = 0;
         this.currentWrong = 0;
+        this.showTranslationInitialized = false;
     }
 
     init() {
@@ -30,7 +31,6 @@ class FR {
             const percentCorrect = ((w.totalCount - w.wrongCount) / w.totalCount) * 100;
             return percentCorrect <= 80;
         });
-        // TODO: vsechny maji nad 80%
         words = words.filter(w => {
             const localWord = wrongLocal.find(lw => lw.id == w.id);
             if (localWord == null) {
@@ -67,16 +67,23 @@ class FR {
             console.log(words);
             const wordHolder = document.querySelector("#word");
             wordHolder.classList.remove(`hidden`);
-            wordHolder.addEventListener("click", e => that.showTranslation());
+            if (!this.showTranslationInitialized) {
+                this.showTranslationInitialized = true;
+                wordHolder.addEventListener("click", e => that.showTranslation());
+            }
             const [head, ...tail] = words;
             const latinCard = document.querySelector("#word .card__face--front");
             const czechCard = document.querySelector("#word .card__face--back");
-            latinCard.innerText = head.latin;
-            czechCard.innerText = head.cz;
             that.currectWordCount = words.length;
             that.currentWord = head;
             that.remainingWords = tail;
-
+            if (head != null) {
+                latinCard.innerText = head.latin;
+                czechCard.innerText = head.cz;
+            } else {
+                latinCard.innerText = "Nic nenalezeno";
+                czechCard.innerText = "Nic nenalezeno";
+            }
             const chaptersDiv = document.querySelector("#chapters");
             chaptersDiv.classList.add('hidden');
         });
@@ -101,6 +108,11 @@ class FR {
             chaptersDiv.classList.remove('hidden');
             const wordButtonsDiv = document.querySelector(`#wordButtons`);
             wordButtonsDiv.classList.add(`hidden`);
+            // otocime kartu zpatky
+            const card = document.querySelector('.card');
+            card.classList.remove('is-flipped');
+            // schovame kartu
+            card.classList.add("hidden");
             return;
         }
         const latinCard = document.querySelector("#word .card__face--front");
@@ -135,6 +147,8 @@ class FR {
         const progres = this.remainingWords.length === 0 ? 100 : (this.remainingWords.length / this.currectWordCount) * 100;
         this.setProgres(progres);
         this.showWord();
+        const card = document.querySelector('.card');
+        card.classList.remove('is-flipped');
     }
 
     setProgres(percent) {

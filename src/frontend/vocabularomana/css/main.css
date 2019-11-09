@@ -8,7 +8,6 @@ body {
 
 #menu {
 	width: 90%;
-	height: 50px;
 	background: rebeccapurple;
 	color: white;
 	font-size: 20px;
@@ -52,6 +51,7 @@ body {
 	position: relative;
 	transition: transform 1s;
 	transform-style: preserve-3d;
+	line-height: 50px;
 }
 
 .card__face {
@@ -59,15 +59,30 @@ body {
 	height: 100%;
 	width: 100%;
 	backface-visibility: hidden;
+	border-radius: 10px;
+	background: #CBE4FF;
+	border: 2px solid #79d3ff;
 }
 
 .card__face--front {
-	background: red;
+
+}
+
+.card__face--front::after {
+	content: "La";
+	position: absolute;
+	left: 5px;
 }
 
 .card__face--back {
-	background: blue;
+
 	transform: rotateY(180deg);
+}
+
+.card__face--back::after {
+	content: "Cz";
+	position: absolute;
+	left: 5px;
 }
 
 .card.is-flipped {

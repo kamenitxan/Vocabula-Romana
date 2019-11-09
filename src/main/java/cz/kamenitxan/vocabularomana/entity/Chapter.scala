@@ -2,6 +2,7 @@ package cz.kamenitxan.vocabularomana.entity
 
 import java.sql.{Connection, Statement}
 
+import com.google.gson.annotations.Expose
 import cz.kamenitxan.jakon.core.model.{JakonObject, Ordered}
 import cz.kamenitxan.jakon.webui.ObjectSettings
 import cz.kamenitxan.jakon.webui.entity.JakonField
@@ -39,10 +40,6 @@ class Chapter extends JakonObject(classOf[Chapter].getName) with Ordered {
 		stmt.setInt(3, id)
 		stmt.executeUpdate()
 	}
-
-	override def getObjectOrder: Double = objectOrder
-
-	override def setObjectOrder(objectOrder: Double): Unit = this.objectOrder = objectOrder
 
 	override val objectSettings: ObjectSettings = null
 
