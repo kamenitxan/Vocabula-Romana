@@ -130,25 +130,28 @@ class FR {
     }
 
     handleBtnClick(evt, correct) {
-        ++this.localData.totalCount;
-        let localWord = this.localData.words.find(w => w.id === this.currentWord.id);
-        if (localWord == null) {
-            localWord = new LocalWord();
-            localWord.id = this.currentWord.id;
-            this.localData.words.push(localWord);
-        }
-        ++this.currentTotal;
-        ++localWord.totalCount;
-        if (!correct) {
-            ++this.currentWrong;
-            ++localWord.wrongCount;
-        }
-        window.localStorage.setItem('wordData', JSON.stringify(this.localData));
-        const progres = this.remainingWords.length === 0 ? 100 : (this.remainingWords.length / this.currectWordCount) * 100;
-        this.setProgres(progres);
-        this.showWord();
         const card = document.querySelector('.card');
         card.classList.remove('is-flipped');
+        setTimeout(() => {
+            ++this.localData.totalCount;
+            let localWord = this.localData.words.find(w => w.id === this.currentWord.id);
+            if (localWord == null) {
+                localWord = new LocalWord();
+                localWord.id = this.currentWord.id;
+                this.localData.words.push(localWord);
+            }
+            ++this.currentTotal;
+            ++localWord.totalCount;
+            if (!correct) {
+                ++this.currentWrong;
+                ++localWord.wrongCount;
+            }
+            window.localStorage.setItem('wordData', JSON.stringify(this.localData));
+            const progres = this.remainingWords.length === 0 ? 100 : 100 - ((this.remainingWords.length / this.currectWordCount) * 100);
+            this.setProgres(progres);
+            this.showWord();
+        }, 200);
+
     }
 
     setProgres(percent) {
