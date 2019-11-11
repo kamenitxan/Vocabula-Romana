@@ -2,8 +2,8 @@ package cz.kamenitxan.vocabularomana.entity
 
 import java.sql.{Connection, Statement}
 
-import com.google.gson.annotations.Expose
 import cz.kamenitxan.jakon.core.model.{JakonObject, Ordered}
+import cz.kamenitxan.jakon.validation.validators.NotEmpty
 import cz.kamenitxan.jakon.webui.ObjectSettings
 import cz.kamenitxan.jakon.webui.entity.JakonField
 import javax.persistence.Transient
@@ -13,6 +13,7 @@ import javax.persistence.Transient
   */
 class Chapter extends JakonObject(classOf[Chapter].getName) with Ordered {
 
+	@NotEmpty
 	@JakonField
 	var name: String = _
 

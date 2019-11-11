@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>cz.kamenitxan</groupId>
 			<artifactId>jakon</artifactId>
-			<version>0.2-20191107.224424-33</version>
+			<version>0.2-20191111.091128-35</version>
 		</dependency>
 	</dependencies>
 
