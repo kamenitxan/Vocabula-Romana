@@ -1,17 +1,18 @@
 package cz.kamenitxan.vocabularomana.entity
 
-import java.sql.{Connection, Statement}
+import cz.kamenitxan.jakon.core.database.JakonField
+import cz.kamenitxan.jakon.core.database.annotation.ManyToOne
 
+import java.sql.{Connection, Statement}
 import cz.kamenitxan.jakon.core.model.JakonObject
 import cz.kamenitxan.jakon.validation.validators.NotEmpty
 import cz.kamenitxan.jakon.webui.ObjectSettings
-import cz.kamenitxan.jakon.webui.entity.JakonField
-import javax.persistence.ManyToOne
+
 
 /**
   * Created by TPa on 2019-08-24.
   */
-class Word extends JakonObject(classOf[Word].getName) {
+class Word extends JakonObject {
 
 	@ManyToOne
 	@NotEmpty

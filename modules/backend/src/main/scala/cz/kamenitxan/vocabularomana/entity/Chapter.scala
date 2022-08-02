@@ -1,17 +1,18 @@
 package cz.kamenitxan.vocabularomana.entity
 
-import java.sql.{Connection, Statement}
+import cz.kamenitxan.jakon.core.database.JakonField
+import cz.kamenitxan.jakon.core.database.annotation.Transient
 
+import java.sql.{Connection, Statement}
 import cz.kamenitxan.jakon.core.model.{JakonObject, Ordered}
 import cz.kamenitxan.jakon.validation.validators.NotEmpty
 import cz.kamenitxan.jakon.webui.ObjectSettings
-import cz.kamenitxan.jakon.webui.entity.JakonField
-import javax.persistence.Transient
+
 
 /**
   * Created by TPa on 2019-08-24.
   */
-class Chapter extends JakonObject(classOf[Chapter].getName) with Ordered {
+class Chapter extends JakonObject with Ordered {
 
 	@NotEmpty
 	@JakonField

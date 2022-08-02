@@ -14,8 +14,8 @@ class AppInit extends JakonInit {
 		DBHelper.addDao(classOf[Chapter])
 		DBHelper.addDao(classOf[Word])
 
-		Director.registerControler(new IndexControler)
-		Director.registerControler(new WordsControler)
+		Director.registerController(new IndexControler)
+		Director.registerController(new WordsControler)
 	}
 
 
