@@ -19,26 +19,26 @@ jobs:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
       - name: Set up JDK 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: 17
+          cache: sbt
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Cache Maven packages
-        uses: actions/cache@v1
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
         with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
       - name: Build with Sbt
         run: sbt compile
-      - name: Test
-        run: sbt githubTest
       - name: Analyze with SonarCube
         uses: sonarsource/sonarqube-scan-action@master
         env:
@@ -52,3 +52,4 @@ jobs:
             -Dsonar.verbose=false
             -Dsonar.exclusions=modules/backend/src/main/resources/**
             -Dsonar.coverageReportPaths=/home/runner/work/Vocabula-Romana/Vocabula-Romana/modules/backend/target/scala-3.2.2/coverage-report/cobertura.xml
+        run: sbt githubTest
