@@ -51,4 +51,4 @@ jobs:
             -Dsonar.sources=modules/backend/src
             -Dsonar.verbose=false
             -Dsonar.exclusions=modules/backend/src/main/resources/**
-            -Dsonar.coverageReportPaths=backend/target/scala-3.2.2/coverage-report/cobertura.xml
+            -Dsonar.coverageReportPaths=/home/runner/work/Vocabula-Romana/Vocabula-Romana/modules/backend/target/scala-3.2.2/coverage-report/cobertura.xml
