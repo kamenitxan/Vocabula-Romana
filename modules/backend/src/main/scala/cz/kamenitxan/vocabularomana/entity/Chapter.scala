@@ -21,9 +21,9 @@ class Chapter extends JakonObject with Ordered {
 
 	@Transient
 	@JakonField
-	override var visibleOrder: Int = _
+	var visibleOrder: Int = _
 	@JakonField(shownInEdit = false, shownInList = false)
-	override var objectOrder: Double = _
+	var objectOrder: Double = _
 
 	override def createObject(jid: Int, conn: Connection): Int = {
 		val sql = "INSERT INTO Chapter (id, name, objectOrder) VALUES (?, ?, ?)"

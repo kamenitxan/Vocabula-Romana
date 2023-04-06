@@ -43,7 +43,7 @@ class WordsControler extends IController {
 
 	private val ALL_WORDS_SQL = "SELECT * FROM Word JOIN Chapter ON Word.chapter_id = Chapter.id"
 
-	def generate() {
+	def generate(): Unit = {
 		val e: TemplateEngine = TemplateUtils.getEngine
 		implicit val conn: Connection = DBHelper.getConnection
 		try {

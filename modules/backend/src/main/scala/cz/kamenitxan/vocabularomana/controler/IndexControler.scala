@@ -19,7 +19,7 @@ class IndexControler extends IController {
 	private val template = "index"
 	private val ALL_PAGES_SQL = "SELECT * FROM Chapter JOIN JakonObject ON Chapter.id = JakonObject.id"
 
-	def generate() {
+	def generate(): Unit = {
 		val e: TemplateEngine = TemplateUtils.getEngine
 		implicit val conn = DBHelper.getConnection
 		try {
