@@ -160,3 +160,4 @@ val PrepareCICommands = Seq(
 
 addCommandAlias("ci", CICommands)
 addCommandAlias("preCI", PrepareCICommands)
+addCommandAlias("githubTest", "project backend; coverageOn; coverage; test; coverageReport; coverageOff;")

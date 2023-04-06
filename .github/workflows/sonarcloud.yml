@@ -18,6 +18,22 @@ jobs:
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build with Sbt
+        run: sbt compile
+      - name: Test
+        run: sbt githubTest
       - name: Analyze with SonarCube
         uses: sonarsource/sonarqube-scan-action@master
         env:
@@ -30,3 +46,4 @@ jobs:
             -Dsonar.sources=modules/backend/src
             -Dsonar.verbose=false
             -Dsonar.exclusions=modules/backend/src/main/resources/**
+            -Dsonar.coverageReportPaths=/backend/target/scala-3.2.2/coverage-report/cobertura.xml
