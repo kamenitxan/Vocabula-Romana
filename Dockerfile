@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY etc/healthcheck.sh healthcheck.sh
 COPY etc/prometheus.yaml prometheus.yaml
-COPY etc/jmx_prometheus_javaagent-0.17.0.jar jmx_prometheus_javaagent.jar
+COPY etc/jmx_prometheus_javaagent-0.18.0.jar jmx_prometheus_javaagent.jar
 COPY etc/nginx.conf /etc/nginx/nginx.conf
 COPY etc/nginx_server.conf /etc/nginx/http.d/default.conf
 COPY modules/backend/target/scala-2.13/vocabularomana-assembly-0.4-SNAPSHOT.jar /app/app.jar

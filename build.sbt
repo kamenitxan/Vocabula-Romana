@@ -13,7 +13,7 @@ version := V.jakon
 
 
 ThisBuild / resolvers += Resolver.mavenLocal
-ThisBuild / resolvers += "Artifactory" at "https://kamenitxans-maven-repository.appspot.com/"
+ThisBuild / resolvers += "Artifactory" at "https://nexus.kamenitxan.eu/repository/jakon/"
 
 
 val Dependencies = new {
@@ -29,8 +29,8 @@ val Dependencies = new {
 					ExclusionRule(organization = "com.sun.mail", name = "smtp"),
 					ExclusionRule(organization = "javax.mail", name = "javax.mail-api")
 				),
-				"com.github.japgolly.scalacss" %% "core" % "0.8.0-RC1",
-				"org.scalatest" %% "scalatest" % "3.1.1" % "test",
+				"com.github.japgolly.scalacss" %% "core" % "1.0.0",
+				"org.scalatest" %% "scalatest" % "3.2.15" % "test",
 				"org.seleniumhq.selenium" % "htmlunit-driver" % "2.52.0" % "test"
 			)
 	)
