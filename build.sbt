@@ -1,9 +1,10 @@
 import sbtassembly.AssemblyPlugin.autoImport.assembly
 
+import scala.collection.Seq
+
 val V = new {
-	val Scala = "3.2.2"
-  val jakon = "0.5.1"
-	val circe = "0.14.1"
+	val Scala = "3.3.6"
+  val jakon = "0.7.0"
 }
 
 scalaVersion := V.Scala
@@ -23,15 +24,9 @@ val Dependencies = new {
 	)
 
 	lazy val backend = Seq(
-		libraryDependencies ++=
-			Seq(
-				"cz.kamenitxan" %% "jakon" % V.jakon  excludeAll (
-					ExclusionRule(organization = "com.sun.mail", name = "smtp"),
-					ExclusionRule(organization = "javax.mail", name = "javax.mail-api")
-				),
-				"com.github.japgolly.scalacss" %% "core" % "1.0.0",
-				"org.scalatest" %% "scalatest" % "3.2.15" % "test",
-				"org.seleniumhq.selenium" % "htmlunit-driver" % "2.52.0" % "test"
+		libraryDependencies ++= Seq(
+				"cz.kamenitxan" %% "jakon" % V.jakon,
+				"com.github.japgolly.scalacss" %% "core" % "1.0.0"
 			)
 	)
 
@@ -40,6 +35,10 @@ val Dependencies = new {
 	)
 
 	lazy val tests = Def.settings(
+		libraryDependencies ++= Seq(
+			"org.scalatest" %% "scalatest" % "3.2.19" % "test",
+			"org.seleniumhq.selenium" % "htmlunit3-driver" % "4.33.0" % "test"
+		)
 	)
 }
 

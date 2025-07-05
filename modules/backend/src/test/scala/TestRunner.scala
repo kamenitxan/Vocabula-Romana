@@ -43,12 +43,15 @@ class TestRunner extends Suites(
 		Director.render()
 	}
 
+	override protected def afterAll(): Unit = {
+		super.afterAll()
+		JakonInit.javalin.stop()
+	}
+
 }
 
 class TestJakonApp extends JakonInit {
-
-	spark.Spark.stop()
-
+	
 	override def daoSetup(): Unit = {
 		super.daoSetup()
 		DBHelper.addDao(classOf[Chapter])
