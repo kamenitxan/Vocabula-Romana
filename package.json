@@ -1,22 +1,17 @@
 {
-  "name": "brunch-app",
-  "description": "Brunch.io application",
+  "name": "vocabula-romana-app",
+  "description": "Vocabula Romana FE",
   "private": true,
-  "author": "Brunch",
+  "author": "Kamenitxan",
   "version": "0.0.1",
   "repository": "",
   "scripts": {
-    "start": "brunch watch --server",
-    "build": "brunch build --production"
+    "mix": "npx mix"
   },
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
   "devDependencies": {
-    "auto-reload-brunch": "^2",
-    "babel-brunch": "~7.0",
-    "babel-preset-env": "^1.7.0",
-    "brunch": "^4",
-    "clean-css-brunch": "^3",
-    "less-brunch": "^2.10.0",
-    "uglify-js-brunch": "^2"
+    "laravel-mix": "^6.0.49"
   }
 }

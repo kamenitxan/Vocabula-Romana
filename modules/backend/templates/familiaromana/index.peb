@@ -33,7 +33,6 @@
 
 
 <script>
-	const FRcls = new (require("FR.js"));
-	const FR = FRcls.init();
+	const FR = window.FR.init();
 </script>
 {% endblock %}

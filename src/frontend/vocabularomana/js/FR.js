@@ -1,4 +1,4 @@
-class FR {
+export default class FR {
 
     constructor() {
         this.currectWordCount = 0;
@@ -198,4 +198,4 @@ class LocalWord {
     }
 }
 
-module.exports = FR;
+window.FR = new FR();
